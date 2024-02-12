@@ -1,5 +1,5 @@
 - name: install and deploy tomcat
-  hosts: java_server
+  hosts: all
   become: true
   tasks:
     - name: update_shell
