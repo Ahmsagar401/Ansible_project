@@ -1,0 +1,31 @@
+- name: install and deploy tomcat
+  hosts: all
+  become: true
+  tasks:
+    - name: update_shell
+	    shell:
+		    cmd: apt update
+
+	  - name: java_download	
+	    shell:
+        cmd: apt install default-jre -y
+
+    - name: downloading_tomcat
+      get_url:
+        url: https://dlcdn.apache.org/tomcat/tomcat-9/v9.0.85/bin/apache-tomcat-9.0.85.tar.gz
+        dest: /opt/
+
+    - name: extracting tomcat
+      unarchive: 
+        src: /opt/apache-tomcat-9.0.85.tar.gz
+        dest: /opt  
+        remote_src: yes  
+
+    - name: providing_execute_permission
+      file:
+        path: /opt/apache-tomcat-9.0.85/bin/startup.sh
+        mode: 0777
+
+    - name: starting tomcat
+      shell:
+        cmd: nohup /opt/apache-tomcat-9.0.85/bin/startup.sh  
