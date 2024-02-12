@@ -3,11 +3,11 @@
   become: true
   tasks:
     - name: update_shell
-	    shell:
-		    cmd: apt update
+      shell:
+	cmd: apt update
 
-	  - name: java_download	
-	    shell:
+    - name: java_download	
+      shell:
         cmd: apt install default-jre -y
 
     - name: downloading_tomcat
