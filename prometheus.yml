@@ -1,5 +1,6 @@
----
-- hosts: all
+- name: install and deploy prometheus
+  hosts: all
+  become: true
   tasks:
     - name: prometheus_installation
       apt:
