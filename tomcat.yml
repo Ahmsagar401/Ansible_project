@@ -1,12 +1,12 @@
 - name: install and deploy tomcat
-  hosts: all
+  hosts: java
   become: true
   tasks:
     - name: update_shell
       shell:
-	cmd: apt update
+        cmd: apt update
 
-    - name: java_download	
+    - name: java_download
       shell:
         cmd: apt install default-jre -y
 
@@ -28,4 +28,4 @@
 
     - name: starting tomcat
       shell:
-        cmd: nohup /opt/apache-tomcat-9.0.85/bin/startup.sh  
+        cmd: nohup /opt/apache-tomcat-9.0.85/bin/startup.sh
